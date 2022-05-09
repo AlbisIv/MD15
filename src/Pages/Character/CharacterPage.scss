@@ -1,0 +1,9 @@
+.character__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 10px;
+  background-color: rgba(102, 189, 138, 0.623);
+  min-height: 500px;
+}

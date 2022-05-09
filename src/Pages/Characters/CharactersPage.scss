@@ -1,0 +1,79 @@
+* {
+  // border: 1px solid black;
+}
+
+.characters__maincontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(102, 189, 138, 0.623);
+}
+.characters__container__cards {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+@media screen and (max-width: 550px) {
+  .characters__container__cards {
+    grid-template-columns: auto auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  .characters__container__cards {
+    grid-template-columns: auto;
+  }
+}
+.character__card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 5px 5px 5px rgb(128, 10, 196);
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    padding-bottom: 10px;
+  }
+}
+.character__picture {
+  max-width: 80%;
+}
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #000000 0%,
+    #53346d 51%,
+    #000000 100%
+  );
+}
+.btn-grad {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+.btn-grad:active {
+  border-color: red;
+}
