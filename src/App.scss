@@ -27,3 +27,38 @@
   justify-content: center;
   padding: 20px;
 }
+
+.input__box {
+  display: flex;
+  align-self: center;
+  column-gap: 5px;
+}
+.btn__container {
+  display: flex;
+  column-gap: 5px;
+}
+
+.Alive {
+  box-shadow: 5px 5px 5px rgb(10, 196, 72);
+}
+.Dead {
+  box-shadow: 5px 5px 5px rgb(0, 0, 0);
+}
+
+.unknown {
+  box-shadow: 5px 5px 5px rgb(248, 248, 248);
+}
+.next__btn {
+  position: fixed;
+  bottom: 50%;
+  right: 0;
+  border: none;
+  background-color: transparent;
+}
+.previous__btn {
+  background-color: transparent;
+  position: fixed;
+  bottom: 50%;
+  left: 0;
+  border: none;
+}

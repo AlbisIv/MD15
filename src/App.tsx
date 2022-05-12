@@ -9,6 +9,9 @@ import Page404 from './Pages/404/Page404';
 import CharactersPage from './Pages/Characters/CharactersPage';
 import CharacterPage from './Pages/Character/CharacterPage';
 import EpisodesPage from './Pages/Episodes/EpisodesPage';
+import LocationsPage from './Pages/Locations/LocationsPage';
+// TODO Loaderi, kur jāgaida dati
+// TODO Nostilot, lai nav baltā fona
 
 const App = () => (
   <Router>
@@ -17,6 +20,7 @@ const App = () => (
         <NavLink className={({ isActive }) => (isActive ? 'link link--active' : 'link')} to="/">Home</NavLink>
         <NavLink className={({ isActive }) => (isActive ? 'link link--active' : 'link')} to="/characters">Characters</NavLink>
         <NavLink className={({ isActive }) => (isActive ? 'link link--active' : 'link')} to="/episodes">Episodes</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? 'link link--active' : 'link')} to="/locations">Locations</NavLink>
         <NavLink className={({ isActive }) => (isActive ? 'link link--active' : 'link')} to="/about">About</NavLink>
       </nav>
     </header>
@@ -26,6 +30,7 @@ const App = () => (
       <Route path="/characters" element={<CharactersPage />} />
       <Route path="/characters/:id" element={<CharacterPage />} />
       <Route path="/episodes" element={<EpisodesPage />} />
+      <Route path="/locations" element={<LocationsPage />} />
 
       <Route path="*" element={<Page404 />} />
     </Routes>
