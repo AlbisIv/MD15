@@ -1,17 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import Loader from '../../Components/Loader/Loader';
 import { Character } from '../../Models/CharacterModel';
 import './CharactersPage.scss';
 
 const CharactersPage = () => {
   const [visibleCharacters, setVisibleCharacters] = useState<Character[]>();
   const [errorMessage, setErrorMessage] = useState<string>();
-  const [searchText, setSearchText] = useState<string>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const status = searchParams.get('status');
+  const page = searchParams.get('page');
+  const [isLoading, setisLoading] = useState<boolean>(false);
 
-  const getCharacters = async (search?:string) => {
+  const getCharacters = async () => {
+    setisLoading(true);
     try {
-      const response = await axios.get(`https://rickandmortyapi.com/api/character${search ? `?status=${search}` : ''}`);
+      const response = await axios
+        .get(`https://rickandmortyapi.com/api/character/?${searchParams}`);
       setVisibleCharacters(response.data.results);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -26,16 +33,16 @@ const CharactersPage = () => {
       }
       console.log(error);
     } finally {
-      console.log('beigas');
+      setisLoading(false);
     }
   };
   const navigate = useNavigate();
   useEffect(() => {
-    getCharacters(searchText);
+    getCharacters();
   }, []);
   useEffect(() => {
-    getCharacters(searchText);
-  }, [searchText]);
+    getCharacters();
+  }, [searchParams]);
   return (
 
     <div className="characters__maincontainer">
@@ -43,38 +50,58 @@ const CharactersPage = () => {
       <div className="btn__container">
         <button
           onClick={() => {
-            setSearchText('');
+            setSearchParams({});
           }}
         >
           All
         </button>
         <button
           onClick={() => {
-            setSearchText('alive');
+            setSearchParams({ ...searchParams, status: 'alive' });
           }}
         >
           Alive
         </button>
         <button
           onClick={() => {
-            setSearchText('dead');
+            setSearchParams({ ...searchParams, status: 'dead' });
           }}
         >
           Dead
         </button>
         <button
           onClick={() => {
-            setSearchText('unknown');
+            setSearchParams({ ...searchParams, status: 'unknown' });
           }}
         >
           Unknown
         </button>
       </div>
+      <div className="btn__container">
+        <button
+          onClick={() => {
+            setCurrentPage(currentPage - 1);
+            console.log({ ...searchParams, page: currentPage.toString() });
+            setSearchParams({ ...searchParams, page: currentPage.toString() });
+          }}
+        >
+          {'<'}
+        </button>
+        <button
+          onClick={() => {
+            setCurrentPage(currentPage + 1);
+            setSearchParams({ ...searchParams, page: currentPage.toString() });
+          }}
+        >
+          {'>'}
+        </button>
+      </div>
+      {isLoading && <Loader />}
       <div className="characters__container__cards">
         {visibleCharacters && visibleCharacters.map((character) => (
           <div
             className={`character__card ${character.status}`}
-            key={Math.random()}
+            key={character.id}
           >
             <div className="character__card__top">
               <img className="character__picture" src={character.image} alt={character.name} />

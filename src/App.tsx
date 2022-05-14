@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import {
   BrowserRouter as Router, Route, Routes, NavLink,
@@ -10,8 +9,8 @@ import CharactersPage from './Pages/Characters/CharactersPage';
 import CharacterPage from './Pages/Character/CharacterPage';
 import EpisodesPage from './Pages/Episodes/EpisodesPage';
 import LocationsPage from './Pages/Locations/LocationsPage';
-// TODO Loaderi, kur jāgaida dati
-// TODO Nostilot, lai nav baltā fona
+// TODO query parametru meklēšana
+// TODO nostilot
 
 const App = () => (
   <Router>
@@ -31,12 +30,9 @@ const App = () => (
       <Route path="/characters/:id" element={<CharacterPage />} />
       <Route path="/episodes" element={<EpisodesPage />} />
       <Route path="/locations" element={<LocationsPage />} />
-
       <Route path="*" element={<Page404 />} />
     </Routes>
-
   </Router>
-
 );
 
 export default App;

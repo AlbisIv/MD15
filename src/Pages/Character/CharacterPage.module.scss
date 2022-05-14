@@ -1,0 +1,21 @@
+.character__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 10px;
+  background-color: rgba(56, 207, 119, 0.76);
+
+  min-height: 500px;
+}
+
+.characters__maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 10px;
+  background-color: rgba(56, 207, 119, 0.76);
+
+  min-height: 500px;
+}

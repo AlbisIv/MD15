@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Character } from '../../Models/CharacterModel';
 // import { Character, getCharacter } from '../../Data/CharacterData';
-import './CharacterPage.scss';
+import styles from './CharacterPage.module.scss';
 
 const CharacterPage = () => {
   const [currentCharacter, setCurrentCharacter] = useState<Character>();
   const [errorMessage, setErrorMessage] = useState<string>();
+  const [maxCharacters, setMaxCharacters] = useState(100);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const CharacterPage = () => {
     try {
       const response = await axios.get(`https://rickandmortyapi.com/api/character${ids ? `/${ids}` : ''}`);
       setCurrentCharacter(response.data);
-      console.log(response.data);
+      setMaxCharacters((await axios.get('https://rickandmortyapi.com/api/character')).data.info.count);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response?.status === 404) {
@@ -36,15 +37,12 @@ const CharacterPage = () => {
   useEffect(() => {
     getCharacter(id);
   }, []);
-  useEffect(() => {
-    getCharacter(id);
-  }, [currentCharacter]);
 
   return (
-    <div className="characters__maincontainer">
+    <div className={styles.characters__maincontainer}>
       {currentCharacter
       && (
-      <div className="character__container">
+      <div className={styles.character__container}>
         <img
           src={currentCharacter?.image}
           alt={currentCharacter?.name}
@@ -88,7 +86,11 @@ const CharacterPage = () => {
       )}
       {errorMessage && (<h3>{errorMessage}</h3>)}
       <button
-        onClick={() => navigate(`/../characters/${(Number(id) - 1).toString()}`)}
+        disabled={id === '1'}
+        onClick={() => {
+          getCharacter((Number(id) - 1).toString());
+          return (navigate(`/../characters/${(Number(id) - 1).toString()}`));
+        }}
         className="previous__btn"
       >
         <svg
@@ -101,7 +103,12 @@ const CharacterPage = () => {
         </svg>
       </button>
       <button
-        onClick={() => navigate(`/../characters/${(Number(id) + 1).toString()}`)}
+        disabled={id === maxCharacters.toString()}
+        onClick={() => {
+          console.log(maxCharacters);
+          getCharacter((Number(id) + 1).toString());
+          return (navigate(`/../characters/${(Number(id) + 1).toString()}`));
+        }}
         className="next__btn"
       >
         <svg

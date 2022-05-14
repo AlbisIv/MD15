@@ -1,10 +1,12 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import styles from './AboutPage.module.scss';
 
 const AboutPage = () => {
   const navigate = useNavigate();
+
   return (
-    <div className="character__container">
+    <div className={styles.main}>
       <h1>About Page</h1>
       <span>A comprehensive about page</span>
       <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate molestiae iure quis ratione architecto deleniti!</span>

@@ -1,18 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   const navigate = useNavigate();
   return (
-    <div className="character__container">
-      <h1>Home Page</h1>
-      <span>A page for all your Rick&Morty needs</span>
-      <br />
-      <button
-        onClick={() => navigate('/about')}
+    <div className={styles.main}>
+      <h1
+        className={styles.header}
       >
-        Learn more
-      </button>
+        Home Page
+      </h1>
+      <span>A page for all your Rick&Morty needs</span>
     </div>
   );
 };

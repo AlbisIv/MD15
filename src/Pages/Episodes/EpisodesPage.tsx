@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Episode } from '../../Models/EpisodeModel';
-// import { getEpisodes, Episode } from '../../Data/EpisodeData';
 import './EpisodesPage.scss';
 
 const EpisodesPage = () => {
@@ -26,8 +25,6 @@ const EpisodesPage = () => {
         setErrorMessage('Not axios error');
       }
       console.log(error);
-    } finally {
-      console.log('beigas');
     }
   };
   useEffect(() => {
@@ -69,7 +66,7 @@ const EpisodesPage = () => {
         {visibleEpisodes && visibleEpisodes.map((episode) => (
           <div
             className="episode__card"
-            key={Math.random()}
+            key={episode.id}
           >
             <div className="episode__card__top">
               <span>
