@@ -11,7 +11,9 @@ ReactDOM.render(
       href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
       type="text/css"
     />
-    <App />
+    <div className="main-cont">
+      <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root'),
 );

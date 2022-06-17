@@ -1,17 +1,36 @@
+@import "./styles/reset.scss";
+body {
+  @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap");
+  font-family: "Source Code Pro", monospace;
+  height: fit-content;
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapershdnow.com%2Fimages%2Ftv-shows%2Fanimation%2Frick-and-morty%2Frick-and-morty-background-46.jpg&f=1&nofb=1");
+  background-position: center;
+  background-size: cover;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.main-cont {
+  height: 100%;
+}
 .App {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .navigation {
   display: flex;
   column-gap: 20px;
-  border-bottom: 1px solid black;
-  background-color: rgba(245, 245, 57, 0.767);
+  border-bottom: 2px solid rgb(161, 2, 161);
+  background-color: rgb(5, 39, 148);
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: rgb(79, 102, 84);
   cursor: pointer;
 
   &:hover {
@@ -20,7 +39,7 @@
 }
 
 .link--active {
-  color: deeppink;
+  color: rgb(161, 2, 161);
 }
 .navigation {
   display: flex;
@@ -61,4 +80,34 @@
   bottom: 50%;
   left: 0;
   border: none;
+}
+
+.btn {
+  background-color: rgb(161, 2, 161);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  transition: 0.2s;
+  background-size: 200% auto;
+  border-radius: 10px;
+  display: block;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    transform: scale(0.8);
+  }
+  &-all {
+    background-color: rgba(128, 128, 128, 0.589);
+  }
+  &-alive {
+    background-color: rgba(10, 196, 72, 0.589);
+  }
+  &-dead {
+    background-color: rgba(0, 0, 0, 0.678);
+  }
+  &-unknown {
+    color: black;
+    background-color: rgba(248, 248, 248, 0.589);
+  }
 }

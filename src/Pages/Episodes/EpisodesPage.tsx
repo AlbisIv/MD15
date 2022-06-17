@@ -37,6 +37,7 @@ const EpisodesPage = () => {
       <h1 className="episodes__title">Episodes Page</h1>
       <div className="input__box">
         <input
+          className="input"
           placeholder="Search by name"
           onChange={(event) => {
             setInputValue(event.target.value);
@@ -44,6 +45,7 @@ const EpisodesPage = () => {
           type="text"
         />
         <button
+          className="btn btn-alive"
           onClick={() => {
             getEpisodes(inputValue);
             setInputValue('');

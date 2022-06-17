@@ -27,11 +27,9 @@ const CharactersPage = () => {
         } else {
           setErrorMessage(error.message);
         }
-        console.log(error.message);
       } else {
         setErrorMessage('Not axios error');
       }
-      console.log(error);
     } finally {
       setisLoading(false);
     }
@@ -42,13 +40,14 @@ const CharactersPage = () => {
   }, []);
   useEffect(() => {
     getCharacters();
-  }, [searchParams]);
+  }, [searchParams, currentPage]);
   return (
 
     <div className="characters__maincontainer">
       <h1>Characters Page</h1>
       <div className="btn__container">
         <button
+          className="btn btn-all"
           onClick={() => {
             setSearchParams({});
           }}
@@ -56,22 +55,25 @@ const CharactersPage = () => {
           All
         </button>
         <button
+          className="btn btn-alive"
           onClick={() => {
-            setSearchParams({ ...searchParams, status: 'alive' });
+            setSearchParams({ status: 'alive' });
           }}
         >
           Alive
         </button>
         <button
+          className="btn btn-dead"
           onClick={() => {
-            setSearchParams({ ...searchParams, status: 'dead' });
+            setSearchParams({ status: 'dead' });
           }}
         >
           Dead
         </button>
         <button
+          className="btn  btn-unknown"
           onClick={() => {
-            setSearchParams({ ...searchParams, status: 'unknown' });
+            setSearchParams({ status: 'unknown' });
           }}
         >
           Unknown
@@ -79,18 +81,20 @@ const CharactersPage = () => {
       </div>
       <div className="btn__container">
         <button
+          disabled={Number(page) <= 1}
+          className="btn"
           onClick={() => {
+            setSearchParams({ ...searchParams, page: (currentPage - 1).toString() });
             setCurrentPage(currentPage - 1);
-            console.log({ ...searchParams, page: currentPage.toString() });
-            setSearchParams({ ...searchParams, page: currentPage.toString() });
           }}
         >
           {'<'}
         </button>
         <button
+          className="btn"
           onClick={() => {
+            setSearchParams({ ...searchParams, page: (currentPage + 1).toString() });
             setCurrentPage(currentPage + 1);
-            setSearchParams({ ...searchParams, page: currentPage.toString() });
           }}
         >
           {'>'}

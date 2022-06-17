@@ -1,11 +1,13 @@
 .main {
-  background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapershdnow.com%2Fimages%2Ftv-shows%2Fanimation%2Frick-and-morty%2Frick-and-morty-background-46.jpg&f=1&nofb=1");
-  background-position: center;
-  background-size: cover;
-  min-height: 500px;
+  // background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapershdnow.com%2Fimages%2Ftv-shows%2Fanimation%2Frick-and-morty%2Frick-and-morty-background-46.jpg&f=1&nofb=1");
+  // background-position: center;
+  // background-size: cover;
+
+  min-height: 600px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 25px;
-  color: white;
+  color: rgb(233, 160, 235);
 }

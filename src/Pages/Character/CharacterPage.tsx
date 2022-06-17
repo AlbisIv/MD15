@@ -24,13 +24,9 @@ const CharacterPage = () => {
         } else {
           setErrorMessage(error.message);
         }
-        console.log(error.message);
       } else {
         setErrorMessage('Not axios error');
       }
-      console.log(error);
-    } finally {
-      console.log('beigas');
     }
   };
 
@@ -39,7 +35,7 @@ const CharacterPage = () => {
   }, []);
 
   return (
-    <div className={styles.characters__maincontainer}>
+    <div className={styles.character__maincontainer}>
       {currentCharacter
       && (
       <div className={styles.character__container}>

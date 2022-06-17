@@ -9,8 +9,6 @@ import CharactersPage from './Pages/Characters/CharactersPage';
 import CharacterPage from './Pages/Character/CharacterPage';
 import EpisodesPage from './Pages/Episodes/EpisodesPage';
 import LocationsPage from './Pages/Locations/LocationsPage';
-// TODO query parametru meklēšana
-// TODO nostilot
 
 const App = () => (
   <Router>
